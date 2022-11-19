@@ -1,0 +1,75 @@
+<div class="container-fluid g-0 p-2">
+
+  <div class="row g-0">
+
+      <div class="col ps-2">
+
+          <div class="row g-0">
+
+              <div class="col-md-10 text-center">
+                  <span class="name">{{bookmark.category | titlecase}} </span>
+              </div>
+
+              <div class="col-md-2 d-flex justify-content-center align-items-center">
+                  <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-outline-success"
+                          (click)="editBookMarkClicked()">Edit</button>
+                      <button type="button" class="btn btn-outline-danger"
+                          (click)="deleteBookMarkClicked()">Delete</button>
+                  </div>
+              </div>
+
+          </div><div class="row">
+            <div class="column">
+              <table>
+                <tr>
+                  <th>{{bookmark.category}}</th>
+
+                </tr>
+                <tr>
+                  <td>{{bookmark.title}}</td>
+
+                </tr>
+
+                <div class="col-md-12 bg-light text-right">
+                <button (click)=toggleDisplayDivIf()  type="button" class="btn btn-outline-success" >Details</button>
+                </div>
+
+              </table>
+            </div>
+
+          <div *ngIf="!isShowDivIf" class="row g-0 mt-3">
+
+              <div class="col-md">
+
+                  <table class="table table-hover mx-auto">
+                      <thead class="text-center fs-5 fst-italic text-secondary">
+                          <tr>
+                              <td colspan="2">Bookmark Details</td>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Title</td>
+                              <td>{{bookmark.title}}</td>
+                          </tr>
+                          <tr>
+                              <td>Url</td>
+                              <td>{{bookmark.url }}</td>
+                          </tr>
+                          <tr>
+                              <td>Category</td>
+                              <td>{{bookmark.category | titlecase}}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+              </div>
+
+          </div>
+
+      </div>
+
+  </div>
+
+</div>

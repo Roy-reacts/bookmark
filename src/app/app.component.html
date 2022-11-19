@@ -1,0 +1,93 @@
+<div class="container-fluid g-0">
+
+  <!-- HEADER -->
+  <app-header></app-header>
+
+  <!-- MAIN CONTENT -->
+  <main class="black-borde">
+
+    <!-- TOOBAR TO ADD AND SEARCH BOOKMARKS -->
+    <div class="toolbar">
+
+      <div class="add-bookmark">
+        <button type="button" class="btn btn-outline-success btn-lg" data-bs-toggle="modal"
+          data-bs-target="#exampleModal" #addBookMarkButton>Add Bookmark</button>
+      </div>
+
+      <div class="search-bookmarks">
+        <input type="search" class="form-control" placeholder="Search BookMarks"
+          (input)="searchBookMarks(searchInput.value)" #searchInput>
+      </div>
+
+    </div>
+
+    <!-- AREA TO DISPLAY ALL THE BOOKMARKS -->
+    <div class="bookmarks">
+
+      <div class="row mt-5" *ngIf="bookmarks.length == 0">
+        <div class="col text-center">
+          <span class="text-secondary fs-2 fw-bold fst-italic">There are No BookMarks Added!</span>
+        </div>
+      </div>
+
+      <div class="row mt-4" *ngFor="let bookmark of bookmarksToDisplay; let ei = index;">
+        <div class="col">
+          <app-bookmark [bookmark]="bookmark" (onRemoveBookMark)="removeBookMark($event)"
+            (onEditBookMark)="editBookMark($event)"></app-bookmark>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter BookMark Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="bookmarkForm">
+
+       <div class="row mt-5">
+            <div class="col form-heading">
+              <h6 class="text-secondary fst-italic">Bookmark Information</h6>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Title" formControlName="title">
+            </div>
+            <div class="form-group">
+              <label>Enter URL</label>
+              <input type="text" formControlName="url" class="form-control mb-2">
+              <div *ngIf="m.url.touched && m.url.invalid" class="alert alert-danger">
+                <div *ngIf="m.url.errors?.required">Please provide url</div>
+                <div *ngIf="m.url.errors?.pattern">Please provide valid url</div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <select class="form-select" formControlName="category">
+                <option value="default" selected>Select Category</option>
+                <option *ngFor="let option of categoryOptions; let i = index;" value="{{i}}">
+                  {{option | titlecase}}
+                </option>
+              </select>
+              </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addBookMark()">Insert</button>
+      </div>
+    </div>
+  </div>
+</div>
