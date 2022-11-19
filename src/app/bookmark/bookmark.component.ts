@@ -11,7 +11,7 @@ export class BookMarkComponent implements OnInit {
   @Input("bookmarks") bookmarks: any[] = [];
   @Output() onRemoveBookMark = new EventEmitter<number>();
   @Output() onEditBookMark = new EventEmitter<number>();
-  isShowDivIf = false;
+  isShowDivIf = true;
 
   constructor() {
     this.bookmark = {

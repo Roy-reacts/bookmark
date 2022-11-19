@@ -20,20 +20,18 @@
               </div>
 
           </div><div class="row">
-            <div class="column">
+            <div class="col-md-12 bg-light text-right">
               <table>
                 <tr>
                   <th>{{bookmark.category}}</th>
 
                 </tr>
+
                 <tr>
                   <td>{{bookmark.title}}</td>
+                  <button (click)=toggleDisplayDivIf()  type="button" class="btn btn-outline-success" >Details</button>
 
                 </tr>
-
-                <div class="col-md-12 bg-light text-right">
-                <button (click)=toggleDisplayDivIf()  type="button" class="btn btn-outline-success" >Details</button>
-                </div>
 
               </table>
             </div>
