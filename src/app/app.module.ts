@@ -15,14 +15,15 @@ import { DetailsComponent } from './details/details.component';
     AppComponent,
     HeaderComponent,
     BookMarkComponent,
-    DetailsComponent
+    DetailsComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
 
   ],
   providers: [],
