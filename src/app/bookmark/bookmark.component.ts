@@ -12,6 +12,7 @@ export class BookMarkComponent implements OnInit {
   @Output() onRemoveBookMark = new EventEmitter<number>();
   @Output() onEditBookMark = new EventEmitter<number>();
   isShowDivIf = false;
+
   constructor() {
     this.bookmark = {
       title:'',
@@ -35,4 +36,6 @@ export class BookMarkComponent implements OnInit {
   toggleDisplayDivIf() {
     this.isShowDivIf = !this.isShowDivIf;
   }
+
+
 }
